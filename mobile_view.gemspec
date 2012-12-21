@@ -7,14 +7,14 @@ require "mobile_view/version"
 Gem::Specification.new do |s|
   s.name        = "mobile_view"
   s.version     = MobileView::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
+  s.authors     = ["Yu-Cheng Chuang"]
+  s.email       = ["ducksteven@gmail.com"]
   s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of MobileView."
-  s.description = "TODO: Description of MobileView."
+  s.summary     = "View template for mobile devices made easy."
+  s.description = "Easily specify mobile view template for mobile devices."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 3.2.9"
+  s.add_dependency "rails", "~> 3.2.0"
 end
