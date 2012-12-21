@@ -1,3 +1,4 @@
+require "mobile_view/controller_helper"
 require "rack/mobile-detect"
 
 module MobileView
@@ -6,5 +7,12 @@ module MobileView
       app.config.middleware.use "Rack::MobileDetect"
     end
 
+    initializer "mobile_view.controller_methods" do |app|
+      ActionController::Base.send :include, MobileView::ControllerHelper
+
+      # make mobile_device? method a view helper too
+      ActionController::Base.send :helper_method, :mobile_device?
+
+    end
   end
 end
