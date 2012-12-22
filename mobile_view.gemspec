@@ -20,4 +20,5 @@ Gem::Specification.new do |s|
   s.add_dependency "rack-mobile-detect", "~> 0.4.0"
 
   s.add_development_dependency "rspec-rails"
+  s.add_development_dependency "capybara"
 end
