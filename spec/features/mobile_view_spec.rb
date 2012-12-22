@@ -1,15 +1,14 @@
 require 'spec_helper'
 
+# from http://developer.apple.com/library/ios/#documentation/AppleApplications/Reference/SafariWebContent/OptimizingforSafarioniPhone/OptimizingforSafarioniPhone.html
+IPHONE_USER_AGNET = "Mozilla/5.0 (iPhone; U; CPU iOS 2_0 like Mac OS X; en-us) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/XXXXX Safari/525.20"
+
+def use_iphone
+  # depends on defualt driver Capybara::RackTest::Driver
+  page.driver.header("USER_AGENT", IPHONE_USER_AGNET)
+end
+
 describe "View Template Overriding" do
-
-  # from http://developer.apple.com/library/ios/#documentation/AppleApplications/Reference/SafariWebContent/OptimizingforSafarioniPhone/OptimizingforSafarioniPhone.html
-  IPHONE_USER_AGNET = "Mozilla/5.0 (iPhone; U; CPU iOS 2_0 like Mac OS X; en-us) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/XXXXX Safari/525.20"
-
-  def use_iphone
-    # depends on defualt driver Capybara::RackTest::Driver
-    page.driver.header("USER_AGENT", IPHONE_USER_AGNET)
-  end
-
   context "Action view template" do
     it "renders mobile template when client is a mobile device" do
       use_iphone
