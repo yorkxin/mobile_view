@@ -48,7 +48,27 @@ end
 
 ## Cookie-based Mobile View Switching
 
-By setting `mobile=1` cookie, you can force it to load mobile views. This is helpful when debugging the app in desktop browsers, or allowing user to switch to mobile version manually.
+By setting `mobile` cookie, you can force it to load mobile views. This is helpful when debugging the app in desktop browsers, or allowing user to switch to mobile version manually.
+
+Example:
+
+```ruby
+class AppliactionController < ActionController::Base
+  before_filter :manual_mobile_switching
+
+  protected
+  # Detects `_mobile_view` parameter.
+  # If it is any value other than 0, turn on mobile view,
+  # otherwise, turn off mobile view.
+  def manual_mobile_switching
+    if params[:_mobile_view] != "0"
+      cookies["mobile"] = true # or anything other than falsy value
+    else
+      cookies.delete "mobile" # remove `mobile' cookie
+    end
+  end
+end
+```
 
 ## Known Issues
 
