@@ -10,7 +10,7 @@ end
 
 def set_mobile_cookie
   # depends on poltergeist
-  page.driver.set_cookie "mobile", "1"
+  page.driver.set_cookie "mobile", true
 end
 
 describe "View Template Overriding" do
