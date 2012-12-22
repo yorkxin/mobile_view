@@ -45,13 +45,13 @@ describe "View Template Overriding" do
     it "renders mobile layout template when client is a mobile device" do
       use_iphone
 
-      visit "/pages/default"
+      visit "/pages/layout_template"
 
       page.should have_selector('body.mobile')
     end
 
     it "renders default layout template when client is not a mobile device" do
-      visit "/pages/default"
+      visit "/pages/layout_template"
 
       page.should have_selector('body.desktop')
     end
