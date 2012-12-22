@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version     = MobileView::VERSION
   s.authors     = ["Yu-Cheng Chuang"]
   s.email       = ["ducksteven@gmail.com"]
-  s.homepage    = "TODO"
+  s.homepage    = "https://github.com/chitsaou/mobile_view"
   s.summary     = "View template for mobile devices made easy."
   s.description = "Easily specify mobile view template for mobile devices."
 
