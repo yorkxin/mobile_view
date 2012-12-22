@@ -1,4 +1,8 @@
 Dummy::Application.routes.draw do
+  get 'pages/default'
+  get 'pages/action_view'
+  get 'pages/partial_view'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
