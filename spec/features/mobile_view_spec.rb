@@ -4,8 +4,8 @@ require 'spec_helper'
 IPHONE_USER_AGNET = "Mozilla/5.0 (iPhone; U; CPU iOS 2_0 like Mac OS X; en-us) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/XXXXX Safari/525.20"
 
 def use_iphone
-  # depends on defualt driver Capybara::RackTest::Driver
-  page.driver.header("USER_AGENT", IPHONE_USER_AGNET)
+  # depends on poltergeist
+  page.driver.headers = { "User-Agent" => IPHONE_USER_AGNET }
 end
 
 describe "View Template Overriding" do

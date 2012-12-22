@@ -17,7 +17,8 @@ Gem::Specification.new do |s|
   s.add_dependency "rack-mobile-detect", "~> 0.4.0"
 
   s.add_development_dependency "rspec-rails"
-  s.add_development_dependency "capybara"
+  s.add_development_dependency "capybara", "~> 1.1.0"
+  s.add_development_dependency "poltergeist"
 
   s.require_paths = ["lib"]
 end
