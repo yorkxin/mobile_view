@@ -26,23 +26,62 @@ Development dependency:
 
 ### `action.mobile.html.erb` View Template
 
-#### Scenario
+If you have problems like this:
 
-You have a view template for `posts#show`, with many DOM elements and JavaScripts, which is good for desktop, but painful for mobile devices. You're tired of `<%= render_something if mobile? %>` conditional hell. You want to make it mobile-friendly, with a view that is mostly different and built form scratch.
+1. You have a view template for `posts#show`, with many DOM elements and JavaScripts, which is good for desktop, but painful for mobile devices. (In such case even Responsive Web Design with CSS media queries doesn't help you much.)
+* You're tired of `<%= render_something if mobile? %>` conditional hell.
+* You want to make a mobile-friendly view, which is mostly different from desktop version, build form scratch.
 
-#### Solution
+With MobileView, you can add `posts/show.mobile.html.erb` along with `posts/show.html.erb`. Then, if the browser is a mobile device, Rails will choose the mobile template first:
 
-Add `posts/show.mobile.html.erb` along with `posts/show.html.erb`. If the browser is a mobile device, then Rails will choose the mobile template first.
+* <tt>posts/show.html.erb</tt> = default view for `posts#show`
+* <tt>posts/show<b>.mobile</b>.html.erb</tt> = mobile view for `posts#show`
 
-It works for any format handlers (`erb`, `haml` etc.) and formats (`json`, `js`, `xml` etc.) available in your Rails application. You just have to add `mobile` after the view's name.
+It also works for partial views and layout views:
 
-It also works for partial views. When a mobile version of partial view is not available, it will choose non-mobile version automatically. You just have to add `mobile` after the view's name.
+* <tt>posts/_post.html.erb</tt> = default view for partial view `posts/post`
+* <tt>posts/_post<b>.mobile</b>.html.erb</tt> = mobile view for partial view `posts/post`
 
-It also works for layout view. So you can now use `views/layouts/application.mobile.html.erb` for mobile devices.
+and
+
+* <tt>layouts/application.html.erb</tt> = default layout
+* <tt>layouts/application<b>.mobile</b>.html.erb</tt> = mobile layout
+
+#### ERb, HAML; JSON, JavaScript etc. All Supported.
+
+You can use any template handlers (`erb`, `haml` etc.) and formats (`json`, `js`, `xml` etc.) available in your Rails application.  All you have to do is add another view template with `mobile` after the view's main name (before locale, format and handler). It follows the naming rule of Rails's view template files; the only difference is the `.mobile` interpolation:
+ 
+* <tt>prefix/name<i>.locale.format.handler</i></tt> = default view
+* <tt>prefix/name<b>.mobile</b><i>.locale.format.handler</i></tt> = mobile view
+
+#### Auto Fallback
+
+When a mobile version of partial view is not available, it will automatically fallback to default (non-mobile) version.
 
 ### `mobile?` Helper
 
-Still want to detect mobile device in Controller and View? Use `mobile?` helper. It returns `true` if it thinks the browser is a mobile device, `false` otherwise.
+The `mobile?` helper tells you if currently MobileView switched to mobile version or not. It is available in controller and view.
+
+The situation of "switched to mobile view" could be:
+
+* accessing with a mobile device browser, or
+* manually switched to mobile view (see [cookie-based switching](#cookie-based-mobile-view-switching) below).
+
+Returns `true` if it switched to mobile view, `false` otherwise.
+
+Example:
+
+```ruby
+# in controller
+@text += "Hello! Mobile" if mobile?
+```
+
+```erb
+<%# in view %>
+<%= render_advertisement unless mobile? %>
+```
+
+#### Mounted Engine
 
 To use `mobile?` helper in a mounted engine, for example, [Rails Cell](https://github.com/apotonick/cells), simply include the `MobileView::ControllerAdditions` module:
 
