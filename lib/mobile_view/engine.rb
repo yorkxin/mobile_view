@@ -1,4 +1,4 @@
-require "mobile_view/controller_helper"
+require "mobile_view/controller_additions"
 require "rack/mobile-detect"
 
 module MobileView
@@ -9,7 +9,7 @@ module MobileView
 
     initializer "mobile_view.controller_methods" do |app|
       ActiveSupport.on_load(:action_controller) do
-        include MobileView::ControllerHelper
+        include MobileView::ControllerAdditions
       end
     end
   end

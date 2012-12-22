@@ -38,11 +38,11 @@ It also works for layout view. So you can now use `views/layouts/application.mob
 
 Still want to detect mobile device in Controller and View? Use `mobile?` helper. It returns `true` if it thinks the browser is a mobile device, `false` otherwise.
 
-To use `mobile?` helper in a mounted engine, for example, [Rails Cell](https://github.com/apotonick/cells), simply include the `MobileView::ControllerHelper` module:
+To use `mobile?` helper in a mounted engine, for example, [Rails Cell](https://github.com/apotonick/cells), simply include the `MobileView::ControllerAdditions` module:
 
 ```ruby
 class PostCell < Cell::Rails
-  include MobileView::ControllerHelper
+  include MobileView::ControllerAdditions
 end
 ```
 

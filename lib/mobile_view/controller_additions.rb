@@ -1,5 +1,5 @@
 module MobileView
-  module ControllerHelper
+  module ControllerAdditions
     extend ActiveSupport::Concern
 
     included do
