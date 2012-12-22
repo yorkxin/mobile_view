@@ -10,4 +10,12 @@ class PagesController < ApplicationController
   def partial_view
   end
 
+  # This page uses mobile_device? helper to determine the content to be rendered
+  def conditional
+    @text = if mobile_device?
+      "Hi Mobile!"
+    else
+      "Hi Desktop!"
+    end
+  end
 end

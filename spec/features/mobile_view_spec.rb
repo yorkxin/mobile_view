@@ -74,3 +74,20 @@ describe "View Template Overriding" do
   end
 end
 
+describe "mobile_device? usage" do
+  it "renders mobile-specific content when client is a mobile device" do
+    use_iphone
+
+    visit "/pages/conditional"
+
+    page.should have_selector('#mobile-device')
+    page.should have_content('Hi Mobile!')
+  end
+
+  it "renders general content when client is not a mobile device" do
+    visit "/pages/conditional"
+
+    page.should have_selector('#non-mobile-device')
+    page.should have_content('Hi Desktop!')
+  end
+end
