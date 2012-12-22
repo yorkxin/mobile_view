@@ -38,6 +38,10 @@ It also works for layout view. So you can now use `views/layouts/application.mob
 
 Still want to detect mobile device in Controller and View? Use `mobile?` helper. It returns `true` if it thinks the browser is a mobile device, `false` otherwise.
 
+## Cookie-based Mobile View Switching
+
+By setting `mobile=1` cookie, you can force it to load mobile views. This is helpful when debugging the app in desktop browsers, or allowing user to switch to mobile version manually.
+
 ## Known Issues
 
 ### iPad / Tablets → Mobile View
@@ -51,6 +55,11 @@ According to the algorithm of [Rack::MobileDetect](https://github.com/talison/ra
 * [Implementing a Rails 3 View Resolver - jkfill blog](http://jkfill.com/2011/03/11/implementing-a-rails-3-view-resolver/)
 
 ## Changelog
+
+### 0.2.0
+
+* Support cookie-based switching
+* Rename helper `mobile_device?` to `mobile?` since it now not only detects mobile device, but also accepts cookie-based switching.
 
 ### 0.1.0
 
