@@ -14,126 +14,110 @@ def set_mobile_cookie
 end
 
 describe "View Template Overriding" do
-  context "Action view template" do
-    it "renders mobile template when client is a mobile device" do
+  context "when client is mobile device" do
+    before :each do
       use_iphone
+    end
 
+    it "renders mobile-specific action view template" do
       visit "/pages/action_view"
 
       page.should have_selector('#mobile-view')
     end
 
-    it "renders mobile template when cookie named mobile has been set" do
+    it "renders mobile-specific partial view template" do
+      visit "/pages/partial_view"
+
+      page.should have_selector('#mobile-partial-view')
+    end
+
+    it "renders mobile-specific layout view template" do
+      visit "/pages/layout_template"
+
+      page.should have_selector('body.mobile')
+    end
+
+    it "renders default view template when there is no mobile-specific overriding" do
+      visit "/pages/default"
+
+      page.should have_selector('#hello-world')
+    end
+
+    it "renders mobile-specific content" do
+      visit "/pages/conditional"
+
+      page.should have_selector('#mobile-device')
+      page.should have_content('Hi Mobile!')
+    end
+  end
+
+  context "when client provides mobile cookie" do
+    before :each do
       set_mobile_cookie
+    end
 
+    it "renders mobile-specific action view template" do
       visit "/pages/action_view"
 
       page.should have_selector('#mobile-view')
     end
 
-    it "renders default template when client is not a mobile device" do
+    it "renders mobile-specific partial view template" do
+      visit "/pages/partial_view"
+
+      page.should have_selector('#mobile-partial-view')
+    end
+
+    it "renders mobile-specific layout view template" do
+      visit "/pages/layout_template"
+
+      page.should have_selector('body.mobile')
+    end
+
+    it "renders default view template when there is no mobile-specific overriding" do
+      visit "/pages/default"
+
+      page.should have_selector('#hello-world')
+    end
+
+    it "renders mobile-specific content" do
+      visit "/pages/conditional"
+
+      page.should have_selector('#mobile-device')
+      page.should have_content('Hi Mobile!')
+    end
+  end
+
+  context "when client is not mobile browser" do
+    it "renders default action view template" do
       visit "/pages/action_view"
 
       page.should have_selector('#default-view')
     end
-  end
 
-  context "Overriding partial view template" do
-    it "renders mobile template when client is a mobile device" do
-      use_iphone
-
-      visit "/pages/partial_view"
-
-      page.should have_selector('#mobile-partial-view')
-    end
-
-    it "renders mobile template when cookie named mobile has been set" do
-      set_mobile_cookie
-
-      visit "/pages/partial_view"
-
-      page.should have_selector('#mobile-partial-view')
-    end
-
-    it "renders default template when client is not a mobile device" do
+    it "renders default partial view template" do
       visit "/pages/partial_view"
 
       page.should have_selector('#default-partial-view')
     end
-  end
 
-  context "Overriding layout view template" do
-    it "renders mobile layout template when client is a mobile device" do
-      use_iphone
-
-      visit "/pages/layout_template"
-
-      page.should have_selector('body.mobile')
-    end
-
-    it "renders mobile template when cookie named mobile has been set" do
-      set_mobile_cookie
-
-      visit "/pages/layout_template"
-
-      page.should have_selector('body.mobile')
-    end
-
-    it "renders default layout template when client is not a mobile device" do
+    it "renders default layout view template" do
       visit "/pages/layout_template"
 
       page.should have_selector('body.desktop')
     end
-  end
 
-  context "Not overriding" do
-    it "renders default template when client is a mobile device" do
-      use_iphone
-
+    it "renders default view template when there is no mobile-specific overriding" do
       visit "/pages/default"
 
       page.should have_selector('#hello-world')
     end
 
-    it "renders default template when cookie named mobile has been set" do
-      set_mobile_cookie
+    it "renders general content" do
+      visit "/pages/conditional"
 
-      visit "/pages/default"
-
-      page.should have_selector('#hello-world')
+      page.should have_selector('#non-mobile-device')
+      page.should have_content('Hi Desktop!')
     end
-
-    it "renders default template when client is not a mobile device" do
-      visit "/pages/default"
-
-      page.should have_selector('#hello-world')
-    end
-  end
-end
-
-describe "mobile? usage" do
-  it "renders mobile-specific content when client is a mobile device" do
-    use_iphone
-
-    visit "/pages/conditional"
-
-    page.should have_selector('#mobile-device')
-    page.should have_content('Hi Mobile!')
-  end
-
-  it "renders mobile-specific content when cookie named mobile has been set" do
-    set_mobile_cookie
-
-    visit "/pages/conditional"
-
-    page.should have_selector('#mobile-device')
-    page.should have_content('Hi Mobile!')
-  end
-
-  it "renders general content when client is not a mobile device" do
-    visit "/pages/conditional"
-
-    page.should have_selector('#non-mobile-device')
-    page.should have_content('Hi Desktop!')
   end
 end
