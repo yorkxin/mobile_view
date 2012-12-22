@@ -22,7 +22,7 @@ And then execute:
 
 #### Scenario
 
-You have a view template for `posts#show`, with many DOM elements and JavaScripts, which is good for desktop, but painful for mobile devices. You're tired of `<%= render_something if mobile? %>` conditional hell. You want to make it mobile-friendly, with a view that is mostly different form scratch.
+You have a view template for `posts#show`, with many DOM elements and JavaScripts, which is good for desktop, but painful for mobile devices. You're tired of `<%= render_something if mobile? %>` conditional hell. You want to make it mobile-friendly, with a view that is mostly different and built form scratch.
 
 #### Solution
 
@@ -95,7 +95,7 @@ According to the algorithm of [Rack::MobileDetect](https://github.com/talison/ra
 :birthday: First Release
 
 * `*.mobile` view template auto-overriding
-* Automatically mobile device detection
+* Automatic mobile device detection
 * `mobile_device?` helper for controller and view
 
 ## License
