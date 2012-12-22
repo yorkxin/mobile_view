@@ -74,7 +74,7 @@ describe "View Template Overriding" do
   end
 end
 
-describe "mobile_device? usage" do
+describe "mobile? usage" do
   it "renders mobile-specific content when client is a mobile device" do
     use_iphone
 
