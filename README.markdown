@@ -1,6 +1,6 @@
 # MobileView
 
-Rails view template for mobile devices made easy.
+Easily specify mobile-specific view template for mobile devices in Rails application.
 
 ## Installation
 
