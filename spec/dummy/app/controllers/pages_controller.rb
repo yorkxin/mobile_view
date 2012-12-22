@@ -16,9 +16,9 @@ class PagesController < ApplicationController
     render :layout => "yet-another"
   end
 
-  # This page uses mobile_device? helper to determine the content to be rendered
+  # This page uses mobile? helper to determine the content to be rendered
   def conditional
-    @text = if mobile_device?
+    @text = if mobile?
       "Hi Mobile!"
     else
       "Hi Desktop!"

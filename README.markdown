@@ -22,7 +22,7 @@ And then execute:
 
 #### Scenario
 
-You have a view template for `posts#show`, with many DOM elements and JavaScripts, which is good for desktop, but painful for mobile devices. You're tired of `<%= render_something if mobile_device? %>` conditional hell. You want to make it mobile-friendly, with a view that is mostly different form scratch.
+You have a view template for `posts#show`, with many DOM elements and JavaScripts, which is good for desktop, but painful for mobile devices. You're tired of `<%= render_something if mobile? %>` conditional hell. You want to make it mobile-friendly, with a view that is mostly different form scratch.
 
 #### Solution
 
@@ -34,9 +34,9 @@ It also works for partial views. When a mobile version of partial view is not av
 
 It also works for layout view. So you can now use `views/layouts/application.mobile.html.erb` for mobile devices.
 
-### `mobile_device?` Helper
+### `mobile?` Helper
 
-Still want to detect mobile device in Controller and View? Use `mobile_device?` helper. It returns `true` if it thinks the browser is a mobile device, `false` otherwise.
+Still want to detect mobile device in Controller and View? Use `mobile?` helper. It returns `true` if it thinks the browser is a mobile device, `false` otherwise.
 
 ## Known Issues
 
