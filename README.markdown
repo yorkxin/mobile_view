@@ -16,6 +16,12 @@ And then execute:
 
   * Rails 3.2.x
 
+Development dependency:
+
+  * RSpec
+  * Capybara
+  * [PhantomJS](http://phantomjs.org/) (Capybara's integration test is driven by [poltergeist](https://github.com/jonleighton/poltergeist), for easier cookie and header modification.)
+
 ## Usage
 
 ### `action.mobile.html.erb` View Template
