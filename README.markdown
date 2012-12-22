@@ -50,6 +50,16 @@ According to the algorithm of [Rack::MobileDetect](https://github.com/talison/ra
 * [#397 Action View Walkthrough (pro) - RailsCasts](http://railscasts.com/episodes/397-action-view-walkthrough)
 * [Implementing a Rails 3 View Resolver - jkfill blog](http://jkfill.com/2011/03/11/implementing-a-rails-3-view-resolver/)
 
+## Changelog
+
+### 0.1.0
+
+:birthday: First Release
+
+* `*.mobile` view template auto-overriding
+* Automatically mobile device detection
+* `mobile_device?` helper for controller and view
+
 ## License
 
 The MIT License
