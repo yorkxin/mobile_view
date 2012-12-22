@@ -7,8 +7,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Yu-Cheng Chuang"]
   s.email       = ["ducksteven@gmail.com"]
   s.homepage    = "https://github.com/chitsaou/mobile_view"
-  s.summary     = "View template for mobile devices made easy."
-  s.description = "Easily specify mobile view template for mobile devices."
+  s.summary     = "Rails view template for mobile devices made easy."
+  s.description = "Easily specify mobile-specific view template for mobile devices in Rails application."
 
   s.files       = `git ls-files`.split($\)
   s.test_files  = s.files.grep(%r{^(test|spec|features)/})

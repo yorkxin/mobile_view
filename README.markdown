@@ -1,6 +1,6 @@
 # MobileView
 
-View template for mobile devices made easy.
+Rails view template for mobile devices made easy.
 
 ## Installation
 
@@ -11,6 +11,10 @@ Add this line to your application's Gemfile:
 And then execute:
 
     $ bundle
+
+## Dependency
+
+  * Rails 3.2.x
 
 ## Usage
 
