@@ -1,6 +1,10 @@
+require 'mobile_view/forced_switching'
+
 module MobileView
   module ControllerAdditions
     extend ActiveSupport::Concern
+
+    include MobileView::ForcedSwitching::ControllerAdditions
 
     included do
       # make mobile? method a view helper too
@@ -13,8 +17,10 @@ module MobileView
     end
 
     protected
+    # Returns <tt>true</tt> if +MobileView+ uses mobile version of view templates,
+    # <tt>false</tt> otherwise.
     def mobile?
-      cookies[:mobile].present? || request.headers["X_MOBILE_DEVICE"].present?
+      forced_mobile? || request.headers["X_MOBILE_DEVICE"].present?
     end
   end
 end

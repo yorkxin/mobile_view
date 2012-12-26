@@ -103,18 +103,19 @@ class AppliactionController < ActionController::Base
 
   protected
   # Detects `_mobile_view` parameter.
-  # If it is any value other than 0, turn on mobile view,
-  # otherwise, turn off mobile view.
-  def manual_mobile_switching
-    mobile_view_option = params[:_mobile_view]
-
-    if mobile_view_option
-      if mobile_view_options == "1"
-        cookies["mobile"] = true # or anything other than falsy value
-      elsif mobile_view_option == "0"
-        cookies.delete "mobile" # remove `mobile' cookie
-      end
-    end
+  #
+  # If it is 'yes', force turn on mobile view by setting cookie mobile=1;
+  # if it is 'no', force turn off mobile view by setting cookie mobile=0;
+  # if it is 'auto', remove mobile cookie and fallback to User-Agent mode;
+  # otherwise, no effect.
+  def mobile_switching
+    case params[:_mobile_view]
+    when 'yes'
+      force_mobile!
+    when 'no'
+      force_non_mobile!
+    when 'auto'
+      dismiss_mobile_forcing!
   end
 end
 ```

@@ -8,9 +8,9 @@ def use_iphone
   page.driver.headers = { "User-Agent" => IPHONE_USER_AGNET }
 end
 
-def set_mobile_cookie
+def set_mobile_cookie(value)
   # depends on poltergeist
-  page.driver.set_cookie "mobile", true
+  page.driver.set_cookie "mobile", value
 end
 
 describe "View Template Overriding" do
@@ -51,9 +51,9 @@ describe "View Template Overriding" do
     end
   end
 
-  context "when client provides mobile cookie" do
+  context "when client set cookie mobile=1" do
     before :each do
-      set_mobile_cookie
+      set_mobile_cookie("1")
     end
 
     it "renders mobile-specific action view template" do
@@ -85,6 +85,43 @@ describe "View Template Overriding" do
 
       page.should have_selector('#mobile-device')
       page.should have_content('Hi Mobile!')
+    end
+  end
+
+  context "when client is mobile browser and set cookie mobile=0" do
+    before :each do
+      set_mobile_cookie("0")
+    end
+
+    it "renders default action view template" do
+      visit "/pages/action_view"
+
+      page.should have_selector('#default-view')
+    end
+
+    it "renders default partial view template" do
+      visit "/pages/partial_view"
+
+      page.should have_selector('#default-partial-view')
+    end
+
+    it "renders default layout view template" do
+      visit "/pages/layout_template"
+
+      page.should have_selector('body.desktop')
+    end
+
+    it "renders default view template when there is no mobile-specific overriding" do
+      visit "/pages/default"
+
+      page.should have_selector('#hello-world')
+    end
+
+    it "renders general content" do
+      visit "/pages/conditional"
+
+      page.should have_selector('#non-mobile-device')
+      page.should have_content('Hi Desktop!')
     end
   end
 
