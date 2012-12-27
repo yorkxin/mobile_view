@@ -8,7 +8,7 @@ Easily specify mobile-specific view template for mobile devices in Rails applica
 
 Add this line to your application's Gemfile:
 
-    gem "mobile_view", "~> 0.2.0"
+    gem "mobile_view", "~> 0.3.0"
 
 And then execute:
 
