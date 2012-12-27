@@ -14,6 +14,14 @@ And then execute:
 
     $ bundle
 
+Add these lines into your base controller:
+
+```ruby
+class ApplicationController < ActionController::Base
+  has_mobile_view
+end
+```
+
 ## Dependency
 
   * Rails 3.2.x
@@ -90,6 +98,7 @@ To use `mobile?` helper in a mounted engine, for example, [Rails Cell](https://g
 ```ruby
 class PostCell < Cell::Rails
   include MobileView::ControllerAdditions
+  has_mobile_view
 end
 ```
 
@@ -97,11 +106,15 @@ end
 
 By setting `mobile` cookie, you can force it to load mobile views. This is helpful when debugging the app in desktop browsers, or allowing user to switch to mobile version manually.
 
+The cookie injection of manual switching should happen **before** `has_mobile_view` is invoked.
+
 Example:
 
 ```ruby
 class AppliactionController < ActionController::Base
   before_filter :manual_mobile_switching
+
+  has_mobile_view
 
   protected
   # Detects `_mobile_view` parameter.
