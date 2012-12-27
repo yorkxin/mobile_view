@@ -141,6 +141,17 @@ end
 
 According to the algorithm of [Rack::MobileDetect](https://github.com/talison/rack-mobile-detect/), iPad will be seen as a Mobile Device. This may be a fail assumption if you want to show your desktop website to iPad and tablet users. This can (may) be resolved by replacing mobile device detection logic or add more tablet-specific methods.
 
+Workaround: Force switch to non-mobile version when client is iPad:
+
+```ruby
+class AppliactionController < ActionController::Base
+  before_filter :force_mobile!, :if => :ipad?
+
+  # still have to invoke has_mobile_view after force_mobile!
+  has_mobile_view
+end
+```
+
 ## References
 
 * [#269 Template Inheritance - RailsCasts](http://railscasts.com/episodes/269-template-inheritance)
