@@ -26,7 +26,7 @@ module MobileView
       # Present non-mobile version to iPad users:
       #
       #   class ApplicationController < ActionController::Base
-      #     before_filter :force_non_mobile!, :if => :is_ipad?
+      #     before_filter :force_non_mobile!, :if => :ipad?
       #
       #     has_mobile_view
       #   end
