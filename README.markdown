@@ -168,7 +168,7 @@ end
 ### 0.2.0
 
 * Support cookie-based switching
-* Rename helper `mobile_device?` to `mobile?` since it now not only detects mobile device, but also accepts cookie-based switching.
+* [breaking] Rename helper `mobile_device?` to `mobile?` since it now not only detects mobile device, but also accepts cookie-based switching.
 * Ability to have other mounted engines use `mobile?` helper. (Inspired from [Devise](https://github.com/plataformatec/devise/blob/v2.1.2/lib/devise/controllers/helpers.rb))
 
 ### 0.1.0
