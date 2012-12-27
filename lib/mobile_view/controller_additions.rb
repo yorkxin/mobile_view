@@ -44,7 +44,11 @@ module MobileView
     # Returns <tt>true</tt> if +MobileView+ uses mobile version of view templates,
     # <tt>false</tt> otherwise.
     def mobile?
-      forced_mobile? || request.headers["X_MOBILE_DEVICE"].present?
+      if mobile_forcing?
+        return forced_mobile?
+      else
+        return request.headers["X_MOBILE_DEVICE"].present?
+      end
     end
   end
 end
