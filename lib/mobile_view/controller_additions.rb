@@ -43,6 +43,11 @@ module MobileView
     protected
     # Test if currently MobileView uses mobile version of view templates.
     #
+    # Situations of "use mobile version" is be determined by the following algorithm:
+    #
+    # 1. If using {ForcedSwitching::ControllerAdditions forced switching}, then test if force switched to mobile version.
+    # 2. Otherwise, automatically test by User-Agent (done by {https://github.com/talison/rack-mobile-detect Rack::MobileDetect}).
+    #
     # @return {Boolean}
     def mobile?
       if mobile_forcing?
