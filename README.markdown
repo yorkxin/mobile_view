@@ -131,6 +131,7 @@ class AppliactionController < ActionController::Base
       force_non_mobile!
     when 'auto'
       dismiss_mobile_forcing!
+    end
   end
 end
 ```

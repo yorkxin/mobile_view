@@ -68,6 +68,7 @@ module MobileView
     #         force_non_mobile!
     #       when 'auto'
     #         dismiss_mobile_forcing!
+    #       end
     #     end
     #   end
     module ControllerAdditions
