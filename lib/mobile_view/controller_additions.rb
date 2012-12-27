@@ -41,8 +41,9 @@ module MobileView
     end
 
     protected
-    # Returns <tt>true</tt> if +MobileView+ uses mobile version of view templates,
-    # <tt>false</tt> otherwise.
+    # Test if currently MobileView uses mobile version of view templates.
+    #
+    # @return {Boolean}
     def mobile?
       if mobile_forcing?
         return forced_mobile?
