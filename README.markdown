@@ -146,7 +146,7 @@ Workaround: Force switch to non-mobile version when client is iPad:
 
 ```ruby
 class AppliactionController < ActionController::Base
-  before_filter :force_mobile!, :if => :ipad?
+  before_filter :force_non_mobile!, :if => :ipad?
 
   # still have to invoke has_mobile_view after force_mobile!
   has_mobile_view
