@@ -149,6 +149,11 @@ According to the algorithm of [Rack::MobileDetect](https://github.com/talison/ra
 
 ## Changelog
 
+### 0.3.0
+
+* [breaking] Fron now on you have to invoke `has_mobile_view` in controller explicitly.
+* Wrap cookie-based switching into a bunch of helper methods for code readability.
+
 ### 0.2.0
 
 * Support cookie-based switching
