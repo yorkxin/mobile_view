@@ -1,5 +1,7 @@
 # MobileView
 
+**Note:** Rails 4.1 introduces [Action Pack Variants](http://eapi.rubyonrails.org/classes/ActionController/MimeResponds.html#method-i-respond_to) which solves the problem that this gem solves. You man want to use that built-in feature instead of this gem.
+
 Easily specify mobile-specific view template for mobile devices in Rails application.
 
 **Warning** This gem still has major version of `0` which means it's during early alpha and APIs and usages are subject to change. Strategies and implementations may not be the best practice. Bugs may exist. Feel free to send patches for everyting that you think it's not good or would like to change. I'll add your name to README after approved.
